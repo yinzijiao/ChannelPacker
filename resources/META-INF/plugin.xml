@@ -35,6 +35,10 @@
         <action id="test" class="com.test.action.MainAction" text="test" description="test">
             <add-to-group group-id="WindowMenu" anchor="first"/>
         </action>
+        <action id="pop" class="com.test.action.ResFindAction" text="resfind">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl B"/>
+        </action>
     </actions>
 
     <application-components>
