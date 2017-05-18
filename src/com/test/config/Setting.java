@@ -25,7 +25,18 @@ public class Setting implements PersistentStateComponent<Setting.State> {
     public static class State {
 
         @Tag
-        private String channelType;
+        private String channelType = "";
+
+        @Tag
+        private String channelFile = "";
+
+        public String getChannelFile() {
+            return channelFile;
+        }
+
+        public void setChannelFile(String channelFile) {
+            this.channelFile = channelFile;
+        }
 
         public String getChannelType() {
             return channelType;
