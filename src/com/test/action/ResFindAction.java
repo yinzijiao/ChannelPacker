@@ -2,6 +2,8 @@ package com.test.action;
 
 import com.intellij.ide.CopyProvider;
 import com.intellij.ide.ExporterToTextFile;
+import com.intellij.lang.Language;
+import com.intellij.lang.StdLanguages;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKeys;

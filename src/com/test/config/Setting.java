@@ -22,19 +22,17 @@ public class Setting implements PersistentStateComponent<Setting.State> {
 
     public static State state = new State();
 
-    static class State {
+    public static class State {
 
         @Tag
-        @NotNull
-        private String adbPath;
+        private String channelType;
 
-        @NotNull
-        public String getAdbPath() {
-            return StringUtil.notNullize(adbPath);
+        public String getChannelType() {
+            return channelType;
         }
 
-        public void setAdbPath(@NotNull String adbPath) {
-            this.adbPath = adbPath;
+        public void setChannelType(@NotNull String channelType) {
+            this.channelType = channelType;
         }
     }
 

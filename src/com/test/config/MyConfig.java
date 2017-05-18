@@ -2,6 +2,7 @@ package com.test.config;
 
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.options.ConfigurableBase;
+import com.test.ui.SettingUI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

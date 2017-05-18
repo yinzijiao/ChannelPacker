@@ -32,12 +32,12 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="test" class="com.test.action.MainAction" text="test" description="test">
-            <add-to-group group-id="WindowMenu" anchor="first"/>
-        </action>
-        <action id="pop" class="com.test.action.ResFindAction" text="resfind">
-            <add-to-group group-id="GenerateGroup" anchor="last"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="ctrl B"/>
+        <!--<action id="pop" class="com.test.action.ResFindAction" text="resfind">-->
+        <!--<add-to-group group-id="GenerateGroup" anchor="last"/>-->
+        <!--<keyboard-shortcut keymap="$default" first-keystroke="ctrl B"/>-->
+        <!--</action>-->
+        <action id="channel" class="com.test.action.ChannelAction" text="channel" description="channel">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
         </action>
     </actions>
 
