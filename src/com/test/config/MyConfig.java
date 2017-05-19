@@ -2,6 +2,7 @@ package com.test.config;
 
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.options.ConfigurableBase;
+import com.test.component.MyComponent;
 import com.test.ui.SettingUI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -18,7 +19,7 @@ public class MyConfig extends ConfigurableBase<SettingUI, Setting> {
     @NotNull
     @Override
     protected Setting getSettings() {
-        return ServiceManager.getService(Setting.class);
+        return MyComponent.getInstance().getSetting();
     }
 
     @Override

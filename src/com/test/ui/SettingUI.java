@@ -8,8 +8,11 @@ import com.test.config.Setting;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 
 /**
@@ -21,6 +24,7 @@ public class SettingUI implements ConfigurableUi<Setting> {
     private JPanel jPanel;
     private JTextField textField1;
     private JButton button1;
+    private JLabel hint;
 
     public SettingUI() {
         comboBox1.addItem(Constants.CHANNEL_TYPE_ZIP);
@@ -35,6 +39,25 @@ public class SettingUI implements ConfigurableUi<Setting> {
                 if (selectedFile != null) {
                     textField1.setText(selectedFile.getAbsolutePath());
                     textField1.requestDefaultFocus();
+                }
+            }
+        });
+
+        hint.setForeground(Color.red);
+
+        if (Constants.CHANNEL_TYPE_ZIP.equals(comboBox1.getSelectedItem())) {
+            hint.setText("使用zip模式请在build.gradle中设置:v2SigningEnabled false");
+        } else {
+            hint.setText("");
+        }
+
+        comboBox1.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (Constants.CHANNEL_TYPE_ZIP.equals(e.getItem())) {
+                    hint.setText("使用zip模式请在build.gradle中设置:v2SigningEnabled false");
+                } else {
+                    hint.setText("");
                 }
             }
         });
