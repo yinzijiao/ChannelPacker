@@ -15,7 +15,7 @@ public class MyConfigProvider extends ConfigurableProvider {
     @Nullable
     @Override
     public Configurable createConfigurable() {
-        return new MyConfig("test", "test", "test");
+        return new MyConfig("packer", "packer", "packerWithFlavors");
     }
 
 }

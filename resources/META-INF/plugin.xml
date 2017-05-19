@@ -26,7 +26,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <applicationConfigurable id="test" groupId="test" provider="com.test.config.MyConfigProvider"/>
+        <applicationConfigurable id="packer" groupId="packer" provider="com.test.config.MyConfigProvider"/>
         <applicationService serviceImplementation="com.test.config.Setting" serviceInterface="com.test.config.Setting"/>
     </extensions>
 
@@ -36,7 +36,7 @@
         <!--<add-to-group group-id="GenerateGroup" anchor="last"/>-->
         <!--<keyboard-shortcut keymap="$default" first-keystroke="ctrl B"/>-->
         <!--</action>-->
-        <action id="channel" class="com.test.action.ChannelAction" text="channel" description="channel">
+        <action id="channel" class="com.test.action.ChannelAction" text="packer" description="packerWithFlavors">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
         </action>
     </actions>

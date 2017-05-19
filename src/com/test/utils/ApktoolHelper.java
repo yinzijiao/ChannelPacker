@@ -130,25 +130,22 @@ public class ApktoolHelper {
                 "cmd.exe /C java -jar " + apktools + " b %s -o %s", dir, unsignApk);
         runtimeExec(cmdPack, new File(curPath));
 
-        System.out.println("==INFO 4.3. == 开始签名: " + cmdPack
+        System.out.println("==INFO 4.3. == 开始签名: " + channelName
                 + " ======");
         // 签名
         String signApk = curPath + apkName.substring(Math.max(apkName.lastIndexOf("/"), apkName.lastIndexOf("\\") + 1)).replace(".apk", "") + "_apktool_" + channelName + ".apk";
-        String cmdKey = String
-                .format("cmd.exe /C jarsigner -digestalg SHA1 -sigalg MD5withRSA -tsa https://timestamp.geotrust.com/tsa -verbose -keystore %s -signedjar %s %s %s -storepass  %s",
-                        keyFile, signApk, unsignApk, keyFile, keyPasswd);
 
         String cmdKey1 = String
                 .format("cmd.exe /C jarsigner  -verbose -sigalg SHA1withRSA -digestalg SHA1 -tsa https://timestamp.geotrust.com/tsa -keystore %s -storepass %s -signedjar %s %s %s", keyFile, keyPasswd, signApk, unsignApk, alias);
         runtimeExec(cmdKey1, new File(curPath));
-        System.out.println("==INFO 4.4. == 签名成功: " + cmdKey1
+        System.out.println("==INFO 4.4. == 签名成功: " + channelName
                 + " ======");
         // 删除未签名的包
         File unApk = new File(unsignApk);
         unApk.delete();
 
         //删除中途文件
-        String cmdKeyy = String.format("cmd.exe /C rmdir /s/q %s", dir);
+        String cmdKeyy = String.format("cmd.exe /C rd /s/q %s", dir.replace("/", "\\"));
         runtimeExec(cmdKeyy, new File(curPath));
         manifest_bak.delete();
 

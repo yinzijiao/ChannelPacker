@@ -3,6 +3,7 @@ package com.test.action;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.project.Project;
@@ -30,13 +31,17 @@ public class ChannelAction extends AnAction {
     public void actionPerformed(AnActionEvent e) {
         project = e.getProject();
         VirtualFile virtualFile = e.getData(LangDataKeys.VIRTUAL_FILE);
-        if (!virtualFile.isDirectory() && virtualFile.getName().endsWith(".apk")) {
-            if (Constants.CHANNEL_TYPE_META_INF.equals(Setting.state.getChannelType())) {
-                packerWithZip(virtualFile);
-            } else {
-                packerWithManifest(virtualFile);
-            }
-        }
+        ApplicationManager.getApplication().invokeLater(() -> {
+                    if (!virtualFile.isDirectory() && virtualFile.getName().endsWith(".apk")) {
+                        if (Constants.CHANNEL_TYPE_META_INF.equals(Setting.state.getChannelType())) {
+                            packerWithZip(virtualFile);
+                        } else {
+                            packerWithManifest(virtualFile);
+                        }
+                    }
+                }
+        );
+
     }
 
     private void packerWithManifest(VirtualFile virtualFile) {
@@ -91,6 +96,7 @@ public class ChannelAction extends AnAction {
                 return;
             }
             helper.modifyXudao(name, value, replace);
+            break;//TODO 测试 只执行了一次
         }
     }
 
@@ -131,6 +137,7 @@ public class ChannelAction extends AnAction {
             } catch (IOException e) {
             }
             ChannelHelper.changeChannel(newPath, value);
+            break;//TODO 测试 只执行了一次
         }
     }
 }
