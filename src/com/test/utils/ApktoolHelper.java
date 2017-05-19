@@ -136,7 +136,7 @@ public class ApktoolHelper {
         String signApk = curPath + apkName.substring(Math.max(apkName.lastIndexOf("/"), apkName.lastIndexOf("\\") + 1)).replace(".apk", "") + "_apktool_" + channelName + ".apk";
 
         String cmdKey1 = String
-                .format("cmd.exe /C jarsigner  -verbose -sigalg SHA1withRSA -digestalg SHA1 -tsa https://timestamp.geotrust.com/tsa -keystore %s -storepass %s -signedjar %s %s %s", keyFile, keyPasswd, signApk, unsignApk, alias);
+                .format("cmd.exe /C jarsigner  -verbose -digestalg SHA1 -sigalg MD5withRSA -keystore %s -storepass %s -signedjar %s %s %s", keyFile, keyPasswd, signApk, unsignApk, alias);
         runtimeExec(cmdKey1, new File(curPath));
         System.out.println("==INFO 4.4. == 签名成功: " + channelName
                 + " ======");
