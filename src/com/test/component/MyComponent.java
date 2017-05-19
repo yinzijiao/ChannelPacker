@@ -22,6 +22,7 @@ public class MyComponent implements ApplicationComponent {
 
     public MyComponent() {
         component = this;
+        setting = ServiceManager.getService(Setting.class);
     }
 
     public static MyComponent getInstance() {

@@ -30,6 +30,50 @@ public class Setting implements PersistentStateComponent<Setting.State> {
         @Tag
         private String channelFile = "";
 
+        @Tag
+        private String keystore = "";
+
+        @Tag
+        private String password = "";
+
+        @Tag
+        private String apktools = "";
+
+        @Tag
+        private String alias = "";
+
+        public String getAlias() {
+            return alias;
+        }
+
+        public void setAlias(String alias) {
+            this.alias = alias;
+        }
+
+        public String getKeystore() {
+            return keystore;
+        }
+
+        public void setKeystore(String keystore) {
+            this.keystore = keystore;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public String getApktools() {
+            return apktools;
+        }
+
+        public void setApktools(String apktools) {
+            this.apktools = apktools;
+        }
+
         public String getChannelFile() {
             return channelFile;
         }
