@@ -4,21 +4,19 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.editor.Document;
-import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileManager;
-import com.intellij.psi.PsiFile;
 import com.test.Constants;
 import com.test.config.Setting;
+import com.test.utils.ChannelHelper;
 import com.test.utils.Logger;
 
 import java.io.File;
-import java.net.URI;
+import java.io.IOException;
 
 /**
  * Created by yin on 2017/5/18.
@@ -33,18 +31,18 @@ public class ChannelAction extends AnAction {
         VirtualFile virtualFile = e.getData(LangDataKeys.VIRTUAL_FILE);
         if (!virtualFile.isDirectory() && virtualFile.getName().endsWith(".apk")) {
             if (Constants.CHANNEL_TYPE_ZIP.equals(Setting.state.getChannelType())) {
-                packerWIthZip(virtualFile);
+                packerWithZip(virtualFile);
             } else {
-                packerWIthManifest(virtualFile);
+                packerWithManifest(virtualFile);
             }
         }
     }
 
-    private void packerWIthManifest(VirtualFile virtualFile) {
+    private void packerWithManifest(VirtualFile virtualFile) {
 
     }
 
-    private void packerWIthZip(VirtualFile virtualFile) {
+    private void packerWithZip(VirtualFile virtualFile) {
         if (StringUtil.isEmpty(Setting.state.getChannelFile())) {
             Messages.showMessageDialog(project, "请在设置中配置正确的路径", "提示", Messages.getInformationIcon());
             return;
@@ -55,6 +53,7 @@ public class ChannelAction extends AnAction {
             return;
         }
 
+        Logger.i("begin_zip");
         Document document = FileDocumentManager.getInstance().getDocument(fileByIoFile);
         String text = document.getText();
         String[] channels = text.split("\n");
@@ -73,8 +72,13 @@ public class ChannelAction extends AnAction {
                 return;
             }
 
-            virtualFile.getPath();
-
+            String newPath = virtualFile.getPath().substring(0, virtualFile.getPath().length() - 4) + "_" + name + ".apk";
+            try {
+                ChannelHelper.copyFile(virtualFile.getPath(), newPath);
+            } catch (IOException e) {
+            }
+            ChannelHelper.changeChannel(newPath, value);
+            break;
         }
     }
 }

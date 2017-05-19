@@ -32,8 +32,10 @@ public class SettingUI implements ConfigurableUi<Setting> {
                 fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 fileChooser.showDialog(new JPanel(), "选择");
                 File selectedFile = fileChooser.getSelectedFile();
-                textField1.setText(selectedFile.getAbsolutePath());
-                textField1.requestDefaultFocus();
+                if (selectedFile != null) {
+                    textField1.setText(selectedFile.getAbsolutePath());
+                    textField1.requestDefaultFocus();
+                }
             }
         });
     }
