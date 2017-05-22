@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>com.packer.as.plugin</id>
     <name>ChannelPacker</name>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <vendor email="1527698149@qq.com" url="">yzj</vendor>
 
     <description><![CDATA[

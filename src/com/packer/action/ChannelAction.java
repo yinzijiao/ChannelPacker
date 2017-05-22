@@ -16,6 +16,7 @@ import com.packer.config.Setting;
 import com.packer.utils.ApktoolHelper;
 import com.packer.utils.ChannelHelper;
 import com.packer.utils.Logger;
+import com.packer.utils.UIHelper;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,28 +49,28 @@ public class ChannelAction extends AnAction {
 
     private void packerWithManifest(VirtualFile virtualFile) {
         if (StringUtil.isEmpty(Setting.state.getChannelFile())) {
-            messageHint("请在设置中配置正确的渠道路径");
+            UIHelper.messageHint("请在设置中配置正确的渠道路径");
             return;
         }
         VirtualFile fileByIoFile = LocalFileSystem.getInstance().findFileByIoFile(new File(Setting.state.getChannelFile()));
         if (!fileByIoFile.exists()) {
-            messageHint("请在设置中配置正确的渠道路径");
+            UIHelper.messageHint("请在设置中配置正确的渠道路径");
             return;
         }
         if (StringUtil.isEmpty(Setting.state.getKeystore())) {
-            messageHint("请在设置中配置正确的签名文件路径");
+            UIHelper.messageHint("请在设置中配置正确的签名文件路径");
             return;
         }
         if (StringUtil.isEmpty(Setting.state.getApktools())) {
-            messageHint("请在设置中配置正确的apktool路径");
+            UIHelper.messageHint("请在设置中配置正确的apktool路径");
             return;
         }
         if (StringUtil.isEmpty(Setting.state.getPassword())) {
-            messageHint("请在设置中配置正确的签名密码");
+            UIHelper.messageHint("请在设置中配置正确的签名密码");
             return;
         }
         if (StringUtil.isEmpty(Setting.state.getAlias())) {
-            messageHint("请在设置中配置正确的别名");
+            UIHelper.messageHint("请在设置中配置正确的别名");
             return;
         }
 
@@ -94,7 +95,7 @@ public class ChannelAction extends AnAction {
                 name = strings[1];
                 value = strings[2];
             } else {
-                messageHint("请按正确的规则配置渠道名");
+                UIHelper.messageHint("请按正确的规则配置渠道名");
                 return;
             }
             helper.modifyXudao(name, value, replace, i == channels.length - 1);
@@ -103,12 +104,12 @@ public class ChannelAction extends AnAction {
 
     private void packerWithZip(VirtualFile virtualFile) {
         if (StringUtil.isEmpty(Setting.state.getChannelFile())) {
-            messageHint("请在设置中配置正确的渠道路径");
+            UIHelper.messageHint("请在设置中配置正确的渠道路径");
             return;
         }
         VirtualFile fileByIoFile = LocalFileSystem.getInstance().findFileByIoFile(new File(Setting.state.getChannelFile()));
         if (!fileByIoFile.exists()) {
-            messageHint("请在设置中配置正确的渠道路径");
+            UIHelper.messageHint("请在设置中配置正确的渠道路径");
             return;
         }
 
@@ -128,7 +129,7 @@ public class ChannelAction extends AnAction {
                 name = strings[1];
                 value = strings[2];
             } else {
-                messageHint("请按正确的规则配置渠道名");
+                UIHelper.messageHint("请按正确的规则配置渠道名");
                 return;
             }
 
@@ -141,12 +142,5 @@ public class ChannelAction extends AnAction {
         }
     }
 
-    private void messageHint(String content){
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Messages.showMessageDialog(project, content, "提示", Messages.getInformationIcon());
-            }
-        });
-    }
+
 }

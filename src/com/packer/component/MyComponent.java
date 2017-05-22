@@ -2,6 +2,8 @@ package com.packer.component;
 
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
 import com.packer.config.Setting;
 import org.jetbrains.annotations.NotNull;
 
