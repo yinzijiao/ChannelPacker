@@ -31,18 +31,20 @@ public class ChannelAction extends AnAction {
     public void actionPerformed(AnActionEvent e) {
         project = e.getProject();
         VirtualFile virtualFile = e.getData(LangDataKeys.VIRTUAL_FILE);
-        ApplicationManager.getApplication().invokeLater(() -> {
-                    if (!virtualFile.isDirectory() && virtualFile.getName().endsWith(".apk")) {
-                        if (Constants.CHANNEL_TYPE_META_INF.equals(Setting.state.getChannelType())) {
-                            packerWithZip(virtualFile);
-                        } else {
-                            packerWithManifest(virtualFile);
-                        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (!virtualFile.isDirectory() && virtualFile.getName().endsWith(".apk")) {
+                    if (Constants.CHANNEL_TYPE_META_INF.equals(Setting.state.getChannelType())) {
+                        packerWithZip(virtualFile);
+                    } else {
+                        packerWithManifest(virtualFile);
                     }
                 }
-        );
-
+            }
+        }).start();
     }
+
 
     private void packerWithManifest(VirtualFile virtualFile) {
         if (StringUtil.isEmpty(Setting.state.getChannelFile())) {

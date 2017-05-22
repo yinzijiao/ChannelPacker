@@ -24,10 +24,13 @@
     <depends>com.intellij.modules.lang</depends>
     -->
 
+    <!--<depends>com.intellij.modules.androidstudio</depends>-->
+
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <applicationConfigurable id="packer" groupId="packer" provider="com.packer.config.MyConfigProvider"/>
-        <applicationService serviceImplementation="com.packer.config.Setting" serviceInterface="com.packer.config.Setting"/>
+        <applicationService serviceImplementation="com.packer.config.Setting"
+                            serviceInterface="com.packer.config.Setting"/>
     </extensions>
 
     <actions>

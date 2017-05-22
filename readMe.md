@@ -1,6 +1,6 @@
 #Android studio 打包插件
 
-    1、直接写入META-INF文件夹内，不需要重新打包
+    1、直接写入META-INF文件夹内，不需要重新打包(需要在build.gradle中设置 : v2SigningEnabled false)
     2、用apktool工具反编译apk，替换AndroidManifest.xml中对应的文本
 
 # 渠道文件格式
