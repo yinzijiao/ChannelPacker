@@ -26,15 +26,11 @@ public class ApktoolHelper {
      *
      * @throws Exception
      */
-    public void modifyXudao(String channelName, String channelValue, String channel) {
-        // 解压 /C 执行字符串指定的命令然后终断    
-        String cmdUnpack = "cmd.exe /C java -jar " + apktools + " d -f -s "
-                + apkName;
-        runtimeExec(cmdUnpack, new File(curPath));          //执行指令 cmd指令
-        System.out.println("==INFO 2.==解压apk成功，准备移动======");
+    public void modifyXudao(String channelName, String channelValue, String channel, boolean canDel) {
 
-        // 备份AndroidManifest.xml    
-        // 获取解压的apk文件名    
+
+        // 备份AndroidManifest.xml
+        // 获取解压的apk文件名
         String[] apkFilePath = apkName.split("\\\\");
         String shortApkName = apkFilePath[apkFilePath.length - 1];
         System.out.println("shortApkName = " + shortApkName);
@@ -42,6 +38,16 @@ public class ApktoolHelper {
         String dir = shortApkName.substring(0, shortApkName.length() - 4);
         System.err.println("dir = " + dir);
         File packDir = new File(dir);   //获得解压的apk目录
+
+
+        if (!packDir.exists()) {
+            // 解压 /C 执行字符串指定的命令然后终断
+            String cmdUnpack = "cmd.exe /C java -jar " + apktools + " d -f -s "
+                    + apkName;
+            runtimeExec(cmdUnpack, new File(curPath));          //执行指令 cmd指令
+            System.out.println("==INFO 2.==解压apk成功，准备移动======");
+        }
+
 
         String f_mani = packDir.getAbsolutePath() + "\\AndroidManifest.xml";
         String f_mani_bak = curPath + "\\AndroidManifest.xml";
@@ -145,8 +151,10 @@ public class ApktoolHelper {
         unApk.delete();
 
         //删除中途文件
-        String cmdKeyy = String.format("cmd.exe /C rd /s/q %s", dir.replace("/", "\\"));
-        runtimeExec(cmdKeyy, new File(curPath));
+        if (canDel) {
+            String cmdKeyy = String.format("cmd.exe /C rd /s/q %s", dir.replace("/", "\\"));
+            runtimeExec(cmdKeyy, new File(curPath));
+        }
         manifest_bak.delete();
 
         System.out.println("==INFO 5 == 完成 ======");

@@ -95,8 +95,7 @@ public class ChannelAction extends AnAction {
                 Messages.showMessageDialog(project, "请按正确的规则配置渠道名", "提示", Messages.getInformationIcon());
                 return;
             }
-            helper.modifyXudao(name, value, replace);
-            break;//TODO 测试 只执行了一次
+            helper.modifyXudao(name, value, replace, i == channels.length - 1);
         }
     }
 
@@ -137,7 +136,6 @@ public class ChannelAction extends AnAction {
             } catch (IOException e) {
             }
             ChannelHelper.changeChannel(newPath, value);
-            break;//TODO 测试 只执行了一次
         }
     }
 }
