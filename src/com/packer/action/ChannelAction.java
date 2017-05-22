@@ -1,4 +1,4 @@
-package com.test.action;
+package com.packer.action;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -11,11 +11,11 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.test.Constants;
-import com.test.config.Setting;
-import com.test.utils.ApktoolHelper;
-import com.test.utils.ChannelHelper;
-import com.test.utils.Logger;
+import com.packer.Constants;
+import com.packer.config.Setting;
+import com.packer.utils.ApktoolHelper;
+import com.packer.utils.ChannelHelper;
+import com.packer.utils.Logger;
 
 import java.io.File;
 import java.io.IOException;

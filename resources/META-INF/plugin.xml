@@ -1,5 +1,5 @@
 <idea-plugin version="2">
-    <id>com.your.company.unique.plugin.id</id>
+    <id>com.packer.as.plugin</id>
     <name>ChannelPacker</name>
     <version>1.0</version>
     <vendor email="1527698149@qq.com" url="">yzj</vendor>
@@ -26,24 +26,24 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <applicationConfigurable id="packer" groupId="packer" provider="com.test.config.MyConfigProvider"/>
-        <applicationService serviceImplementation="com.test.config.Setting" serviceInterface="com.test.config.Setting"/>
+        <applicationConfigurable id="packer" groupId="packer" provider="com.packer.config.MyConfigProvider"/>
+        <applicationService serviceImplementation="com.packer.config.Setting" serviceInterface="com.packer.config.Setting"/>
     </extensions>
 
     <actions>
         <!-- Add your actions here -->
-        <!--<action id="pop" class="com.test.action.ResFindAction" text="resfind">-->
+        <!--<action id="pop" class="com.packer.action.ResFindAction" text="resfind">-->
         <!--<add-to-group group-id="GenerateGroup" anchor="last"/>-->
         <!--<keyboard-shortcut keymap="$default" first-keystroke="ctrl B"/>-->
         <!--</action>-->
-        <action id="channel" class="com.test.action.ChannelAction" text="packer" description="packerWithFlavors">
+        <action id="channel" class="com.packer.action.ChannelAction" text="packer" description="packerWithFlavors">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
         </action>
     </actions>
 
     <application-components>
         <component>
-            <implementation-class>com.test.component.MyComponent</implementation-class>
+            <implementation-class>com.packer.component.MyComponent</implementation-class>
         </component>
     </application-components>
 </idea-plugin>

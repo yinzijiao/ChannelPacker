@@ -1,6 +1,4 @@
-package com.test;
-
-import com.intellij.openapi.ui.Messages;
+package com.packer;
 
 /**
  * Created by yin on 2017/5/19.

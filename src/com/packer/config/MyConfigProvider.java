@@ -1,9 +1,7 @@
-package com.test.config;
+package com.packer.config;
 
-import com.intellij.openapi.application.Application;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.ConfigurableProvider;
-import com.test.component.MyComponent;
 import org.jetbrains.annotations.Nullable;
 
 /**

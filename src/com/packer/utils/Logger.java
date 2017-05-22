@@ -1,7 +1,6 @@
-package com.test.utils;
+package com.packer.utils;
 
 import com.esotericsoftware.minlog.Log;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.ProjectManager;
 
 /**

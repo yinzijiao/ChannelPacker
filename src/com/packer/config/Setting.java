@@ -1,9 +1,7 @@
-package com.test.config;
+package com.packer.config;
 
 import com.intellij.openapi.components.*;
-import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.util.xmlb.annotations.Tag;
-import com.test.utils.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

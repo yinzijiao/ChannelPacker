@@ -1,8 +1,8 @@
-package com.test.component;
+package com.packer.component;
 
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.ServiceManager;
-import com.test.config.Setting;
+import com.packer.config.Setting;
 import org.jetbrains.annotations.NotNull;
 
 /**

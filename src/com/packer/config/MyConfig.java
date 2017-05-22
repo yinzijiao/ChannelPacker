@@ -1,9 +1,8 @@
-package com.test.config;
+package com.packer.config;
 
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.options.ConfigurableBase;
-import com.test.component.MyComponent;
-import com.test.ui.SettingUI;
+import com.packer.component.MyComponent;
+import com.packer.ui.SettingUI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

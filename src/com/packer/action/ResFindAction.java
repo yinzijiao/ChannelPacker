@@ -1,29 +1,20 @@
-package com.test.action;
+package com.packer.action;
 
-import com.intellij.ide.CopyProvider;
-import com.intellij.ide.ExporterToTextFile;
-import com.intellij.lang.Language;
-import com.intellij.lang.StdLanguages;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataKeys;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ContentIterator;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileFilter;
 import com.intellij.psi.*;
-import com.intellij.psi.search.FilenameIndex;
-import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.searches.ReferencesSearch;
 import com.intellij.psi.xml.XmlFile;
 import com.intellij.util.Query;
-import com.test.utils.Logger;
-import org.jetbrains.annotations.NotNull;
+import com.packer.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;

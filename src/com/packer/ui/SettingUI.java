@@ -1,4 +1,4 @@
-package com.test.ui;
+package com.packer.ui;
 
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.options.ConfigurableUi;
@@ -6,17 +6,14 @@ import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.ui.TextComponentAccessor;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.openapi.util.text.StringUtil;
-import com.test.Constants;
-import com.test.config.Setting;
+import com.packer.Constants;
+import com.packer.config.Setting;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.io.File;
 
 /**
  * Created by yin on 2017/5/18.
