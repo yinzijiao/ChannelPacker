@@ -10,6 +10,7 @@ import com.packer.Constants;
 import com.packer.model.YDResultBean;
 import com.packer.utils.HttpRequest;
 import com.packer.utils.Logger;
+import com.packer.utils.ResUtil;
 import com.packer.utils.UIHelper;
 
 /**
@@ -25,7 +26,12 @@ public class YDTranslation extends AnAction {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    String result = HttpRequest.sendGet(Constants.YD_BASE_URL, String.format(Constants.YD_URL_PARAM, text));
+                    String result = null;
+                    try {
+                        result = HttpRequest.sendGet(Constants.YD_BASE_URL, String.format(Constants.YD_URL_PARAM, ResUtil.getUrlEncode(text)));
+                    } catch (Exception e1) {
+                        result = HttpRequest.sendGet(Constants.YD_BASE_URL, String.format(Constants.YD_URL_PARAM, text));
+                    }
                     Logger.e(result);
                     YDResultBean resultBean = new Gson().fromJson(result, YDResultBean.class);
                     if (resultBean != null) {
