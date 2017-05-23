@@ -42,6 +42,9 @@
         <action id="channel" class="com.packer.action.ChannelAction" text="packer" description="packerWithFlavors">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
         </action>
+        <action id="Translation" class="com.packer.action.YDTranslation" text="Translation">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        </action>
     </actions>
 
     <application-components>
