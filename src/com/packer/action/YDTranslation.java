@@ -52,11 +52,15 @@ public class YDTranslation extends AnAction {
                         translation(createCorrectText(text));
                         Logger.e(createCorrectText(text) + repeatCount);
                         repeatCount++;
-                        break;
+                        return;
                     }
                     StringBuilder builder = new StringBuilder();
-                    for (int i = 0; i < resultBean.getTranslation().size(); i++) {
-                        builder.append(i + 1 + "、" + resultBean.getTranslation().get(i) + "\n");
+                    if (resultBean.getTranslation().size() > 1) {
+                        for (int i = 0; i < resultBean.getTranslation().size(); i++) {
+                            builder.append(i + 1 + "、" + resultBean.getTranslation().get(i) + "\n");
+                        }
+                    } else {
+                        builder.append(resultBean.getTranslation().get(0) + "\n");
                     }
                     showText = builder.toString();
                     break;
