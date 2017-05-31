@@ -1,6 +1,10 @@
 package com.packer.ui;
 
+import com.intellij.openapi.application.ApplicationManager;
+
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
@@ -13,6 +17,7 @@ public class BeanUI extends JDialog implements ClipboardOwner {
     private JPanel contentPane;
     private JButton buttonOK;
     private JTextArea textArea1;
+    private JScrollPane jScrollPane;
 
     public BeanUI() {
         setContentPane(contentPane);
@@ -29,8 +34,24 @@ public class BeanUI extends JDialog implements ClipboardOwner {
         });
     }
 
-    public JTextArea getTextArea1() {
-        return textArea1;
+    public void setText(String text) {
+        textArea1.setText(text);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                ApplicationManager.getApplication().invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        jScrollPane.getVerticalScrollBar().setValue(0);
+                    }
+                });
+            }
+        }).start();
     }
 
     private void onOK() {

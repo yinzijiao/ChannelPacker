@@ -2,6 +2,7 @@ package com.packer.ui;
 
 import com.google.gson.*;
 import com.intellij.codeInsight.daemon.impl.analysis.JavaGenericsUtil;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.ui.treeStructure.Tree;
@@ -11,6 +12,8 @@ import com.packer.utils.ResUtil;
 import net.sf.cglib.beans.BeanMap;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
@@ -30,6 +33,8 @@ public class JsonFormatUI {
     private JTree tree1;
     private JButton clearButton;
     private JButton beanButton;
+    private JScrollPane leftScroll;
+    private JScrollPane rightScroll;
 
     public JsonFormatUI() {
         formatButton.addActionListener(new ActionListener() {
@@ -76,15 +81,15 @@ public class JsonFormatUI {
                 stringBuffer.append(ClassMake.CLASS_END);
 
                 BeanUI dialog = new BeanUI();
-                dialog.getTextArea1().setText(stringBuffer.toString());
+                dialog.setText(stringBuffer.toString());
                 Toolkit kit = Toolkit.getDefaultToolkit(); //定义工具包
                 Dimension screenSize = kit.getScreenSize(); //获取屏幕的尺寸
                 int screenWidth = screenSize.width; //获取屏幕的宽
                 int screenHeight = screenSize.height; //获取屏幕的高
                 dialog.setBounds(screenWidth / 2 - 500, screenHeight / 2 - 350, 1000, 700);
                 dialog.setLocationRelativeTo(null);
-                dialog.setSize(1000, 700);
                 dialog.pack();
+                dialog.setSize(1000, 700);
                 dialog.setVisible(true);
             }
         });
