@@ -1,12 +1,12 @@
 <idea-plugin version="2">
     <id>com.packer.as.plugin</id>
-    <name>ChannelPacker</name>
-    <version>1.0.1</version>
+    <name>PluginBox</name>
+    <version>1.0.0</version>
     <vendor email="1527698149@qq.com" url="">yzj</vendor>
 
     <description><![CDATA[
       两种打包方式
-      <a href="https://github.com/yinzijiao/ChannelPacker">github</a>
+      <a href="https://github.com/yinzijiao/PluginBox">github</a>
     ]]></description>
 
     <change-notes><![CDATA[
@@ -24,7 +24,7 @@
     <depends>com.intellij.modules.lang</depends>
     -->
 
-    <!--<depends>com.intellij.modules.androidstudio</depends>-->
+    <depends>com.intellij.modules.androidstudio</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
